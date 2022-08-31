@@ -1,7 +1,7 @@
-classe  funcionario;
-  total_de_funcionarios  =  0  # variável estática
+classe  funcionario()
+total_de_funcionarios  =  0  # variável estática
 
-  def  __init__ ( self , nome , matricula ):
+def  __init__ ( self , nome , matricula ):
     próprio . nome  =  nome
     próprio . matricula  =  matricula
     Funcionario . total_de_funcionarios  =  funcionario . total_de_Funcionarios  +  1

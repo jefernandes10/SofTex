@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+    <head>
+        <!-- meta -->
+        <meta charset="utf-8">
+        <meta name="description" content="Flat, Clean, Responsive, admin template built with bootstrap 3">
+        <meta name="viewport" content="width=device-width, user-scalable=1, initial-scale=1, minimum-scale=0.1, maximum-scale=10">
+
+        <title>Aluno | PROLINFO</title>
+
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+        <!-- /bootstrap -->
+
+        <!-- core styles -->
+        <link rel="stylesheet" href="../../css/skins/palette.1.css" id="skin">
+        <link rel="stylesheet" href="../../css/fonts/style.1.css" id="font">
+        <link rel="stylesheet" href="../../css/main.css">
+        <link rel="stylesheet" href="../../css/animate.min.css">
+        <link rel="stylesheet" href="../../vendor/offline/theme.css">
+        <!-- /core styles -->
+
+        <!-- page level styles -->
+        <link rel="stylesheet" href="../../vendor/bootstrap-select/bootstrap-select.css">
+        <!-- /page level styles -->
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- load modernizer -->
+        <script src="../../vendor/modernizr.js"></script>
+    </head>
+
+    <!-- body -->
+
+    <body>
+        <div class="app">
+
+            <!-- top header -->
+            <?php include './common/menuMatricula.php' ?>
+            <!-- /top header -->
+
+            <section class="layout">
+                <!-- main content -->
+                <section class="main-content" style="background: url('../img/prolinfo/linguas_estr_op.png') no-repeat top center;">
+
+                    <!-- content wrapper -->
+                    <div class="content-wrap" >
+
+
+                        <div class="col-lg-12" >
+
+                            <section class="panel" style="background: rgba(255, 255, 255, 0.9)">
+                                <header  class="panel-heading label-default text-center" style=" background-color: #ffffff; border-color:#294777 color"><h2><i class="fa fa-user  "></i> Portal do Aluno</h2></header>
+                                <div class="panel-body">
+                                    <?php
+
+                                    use controller\MatriculaController as MC;
+
+$aluno = $_SESSION['usuarioAluno'];
+                                    $result = MC::findByAluno($aluno);
+                                    ?>
+
+                                    <h3 class="text-center mg-b-lg  ">Seja Bem-Vindo(a), 
+                                        <?php
+                                        header('Content-Type: text/html; charset=utf-8');
+                                        setlocale(LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese');
+
+                                        date_default_timezone_set('America/Recife');
+
+
+                                        $nome = $aluno->getNome();
+                                        $nomeC = ucwords(mb_strtoupper($nome));
+                                        //if (isset($nome[2]))
+                                        //{
+                                           // $nomeC .= " " . $nome[2];
+                                        //}
+                                        echo $nomeC;
+										
+                                        ?></h3>
